@@ -25,6 +25,8 @@ spec:
   - name: task-pvc
     mountPath: /artifacts   
   steps:
+    - securityContext:
+        privileged: true
     - name: clone-repo
       image: alpine/git
       env:
@@ -89,7 +91,7 @@ spec:
           cd /workspace && source build-docker-image.sh;
 ---
 apiVersion: tekton.dev/v1beta1
-kind: Task
+kind: 
 metadata:
   name: validate-task
 spec:
